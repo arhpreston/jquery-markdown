@@ -49,9 +49,14 @@
     // - getConverter() returns the markdown converter object that was passed to the constructor
     // - run() actually starts the editor; should be called after all necessary plugins are registered. Calling this more than once is a no-op.
     // - refreshPreview() forces the preview to be updated. This method is only available after run() was called.
-    Markdown.Editor = function (markdownConverter, idPostfix, help) {
+    Markdown.Editor = function (markdownConverter,
+				buttonsId, textareaId, previewId,
+				idPostfix, help) {
 
-        idPostfix = idPostfix || "";
+	buttonsId  = buttonsId || "wmd-button-bar";
+	textareaId = textareaId || "wmd-input";
+	previewId  = previewId || "wmd-preview";
+        idPostfix  = idPostfix || "";
 
         var hooks = this.hooks = new Markdown.HookCollection();
         hooks.addNoop("onPreviewRefresh");       // called with no arguments after the preview has been refreshed
@@ -70,7 +75,7 @@
             if (panels)
                 return; // already initialized
 
-            panels = new PanelCollection(idPostfix);
+            panels = new PanelCollection(buttonsId, textareaId, previewId, idPostfix);
             var commandManager = new CommandManager(hooks);
             var previewManager = new PreviewManager(markdownConverter, panels, function () { hooks.onPreviewRefresh(); });
             var undoManager, uiManager;
@@ -246,10 +251,10 @@
     // This ONLY affects Internet Explorer (tested on versions 6, 7
     // and 8) and ONLY on button clicks.  Keyboard shortcuts work
     // normally since the focus never leaves the textarea.
-    function PanelCollection(postfix) {
-        this.buttonBar = doc.getElementById("wmd-button-bar" + postfix);
-        this.preview = doc.getElementById("wmd-preview" + postfix);
-        this.input = doc.getElementById("wmd-input" + postfix);
+    function PanelCollection(buttonsId, textareaId, previewId, postfix) {
+	this.buttonBar = doc.getElementById(buttonsId + postfix);
+	this.preview = doc.getElementById(previewId + postfix);
+	this.input = doc.getElementById(textareaId + postfix);
     };
 
     // Returns true if the DOM element is visible, false if it's hidden.
