@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>jquery.markdown.js - test</title>
+
+  <link href="wmd-buttons.css" type="text/css" media="all" rel="stylesheet" />
+
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="../markdown/Markdown.Converter.js"></script>
+  <script type="text/javascript" src="../markdown/Markdown.Sanitizer.js"></script>
+  <script type="text/javascript" src="../markdown/Markdown.Editor.js"></script>
+  <script type="text/javascript" src="../markdown/jquery.markdown.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+	$( ".md" ).markdown();
+	$( "#md3" ).markdown({
+	    'textareaClass' : 'test-textarea'
+	});
+    });
+  </script>
+</head>
+
+<body>
+
+  <h1>jquery.markdown.js test</h1>
+
+  <div class="md">
+    <h2>Markdown 1</h2>
+  </div>
+
+  <div class="md">
+    <h2>Markdown 2</h2>
+  </div>
+
+  <div id="md3">
+    <h2>Markdown 3</h2>
+    <textarea class="test-textarea" id="test"></textarea>
+  </div>
+
+</body>
+
+</html>
