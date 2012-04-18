@@ -15,6 +15,8 @@
 ;(function($) {
     'use strict';
 
+    var idCounter = 0;
+
     var methods = {
 	init : function(options) {
 	    return this.each(function(index) {
@@ -45,7 +47,7 @@
 		    if (!textarea.length) {
 			textarea = $('<textarea/>', {
 			    class: settings.textareaClass,
-			    id   : settings.textareaClass + index
+			    id   : settings.textareaClass + idCounter++
 			});
 			elem.append(textarea);
 		    }
@@ -53,14 +55,14 @@
 		    if (!buttons.length) {
 			buttons  = $('<div/>', {
 			    class: settings.buttonClass,
-			    id   : settings.buttonClass + index
+			    id   : settings.buttonClass + idCounter++
 			}).insertBefore(textarea);
 		    }
 
 		    if (!preview.length) {
 			preview  = $('<div/>', {
 			    class: settings.previewClass,
-			    id   : settings.previewClass + index
+			    id   : settings.previewClass + idCounter++
 			}).insertAfter(textarea);
 		    }
 
