@@ -27,9 +27,9 @@ Initialize the editor:
 The editor can use the DOM elements you pass to it instead of initializing new ones:
 
       $( ".markdown-input" ).markdown({
-            'buttonClass'  : 'markdown-buttons',
-            'textareaClass': 'markdown-editor',
-            'previewClass' : 'markdown-preview'
+            'buttonClass'  : $( '#markdown-buttons' ),
+            'textareaClass': $( '#markdown-editor' ),
+            'previewClass' : $( 'markdown-preview' )
       });
 
 

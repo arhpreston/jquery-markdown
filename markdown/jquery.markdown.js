@@ -23,6 +23,9 @@
 		var elem = $(this); // equivalent: this.eq(index);
 
 		var defaults = {
+		    'buttons'      : null,
+		    'textarea'     : null,
+		    'preview'      : null,
 		    'buttonClass'  : 'markdown-buttons',
 		    'textareaClass': 'markdown-editor',
 		    'previewClass' : 'markdown-preview'
@@ -40,11 +43,14 @@
 		if (!elem.data('markdown')) {
 
 		    // 1) Find/create required elements
-		    var textarea = elem.find( '.'+settings.textareaClass );
-		    var buttons  = elem.find( '.'+settings.buttonClass );
-		    var preview  = elem.find( '.'+settings.previewClass );
+		    var textarea = settings.textarea;
+		    var buttons  = settings.button;
+		    var preview  = settings.preview;
+		    //var textarea = elem.find( '.'+settings.textareaClass );
+		    //var buttons  = elem.find( '.'+settings.buttonClass );
+		    //var preview  = elem.find( '.'+settings.previewClass );
 
-		    if (!textarea.length) {
+		    if (!textarea) {
 			textarea = $('<textarea/>', {
 			    class: settings.textareaClass,
 			    id   : settings.textareaClass + idCounter++
@@ -52,14 +58,14 @@
 			elem.append(textarea);
 		    }
 
-		    if (!buttons.length) {
+		    if (!buttons) {
 			buttons  = $('<div/>', {
 			    class: settings.buttonClass,
 			    id   : settings.buttonClass + idCounter++
 			}).insertBefore(textarea);
 		    }
 
-		    if (!preview.length) {
+		    if (!preview) {
 			preview  = $('<div/>', {
 			    class: settings.previewClass,
 			    id   : settings.previewClass + idCounter++
