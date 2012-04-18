@@ -24,12 +24,12 @@ Initialize the editor:
 
 ##Options##
 
-The editor can use the DOM elements you pass to it instead of initializing new ones:
+The editor will accept predefined DOM elements and/or look for
+elements with the default classes (see tests for examples):
 
       $( ".markdown-input" ).markdown({
-            'buttonClass'  : $( '#markdown-buttons' ),
-            'textareaClass': $( '#markdown-editor' ),
-            'previewClass' : $( 'markdown-preview' )
+            'buttons'      : $( '#button-element-id' ),
+            'previewClass' : 'markdown-preview'
       });
 
 
