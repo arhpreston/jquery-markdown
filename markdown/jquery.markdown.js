@@ -43,14 +43,11 @@
 		if (!elem.data('markdown')) {
 
 		    // 1) Find/create required elements
-		    var textarea = settings.textarea;
-		    var buttons  = settings.button;
-		    var preview  = settings.preview;
-		    //var textarea = elem.find( '.'+settings.textareaClass );
-		    //var buttons  = elem.find( '.'+settings.buttonClass );
-		    //var preview  = elem.find( '.'+settings.previewClass );
+		    var textarea = settings.textarea || elem.find( '.'+settings.textareaClass );
+		    var buttons  = settings.button   || elem.find( '.'+settings.buttonClass );
+		    var preview  = settings.preview  || elem.find( '.'+settings.previewClass );
 
-		    if (!textarea) {
+		    if (!textarea.length) {
 			textarea = $('<textarea/>', {
 			    class: settings.textareaClass,
 			    id   : settings.textareaClass + idCounter++
@@ -58,14 +55,14 @@
 			elem.append(textarea);
 		    }
 
-		    if (!buttons) {
+		    if (!buttons.length) {
 			buttons  = $('<div/>', {
 			    class: settings.buttonClass,
 			    id   : settings.buttonClass + idCounter++
 			}).insertBefore(textarea);
 		    }
 
-		    if (!preview) {
+		    if (!preview.length) {
 			preview  = $('<div/>', {
 			    class: settings.previewClass,
 			    id   : settings.previewClass + idCounter++
