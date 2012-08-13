@@ -48,25 +48,24 @@
 		    var preview  = settings.preview  || elem.find( '.'+settings.previewClass );
 
 		    if (!textarea.length) {
-			textarea = $('<textarea/>', {
-			    class: settings.textareaClass,
-			    id   : settings.textareaClass + idCounter++
-			});
+			textarea = $('<textarea/>');
+            		textarea.addClass(   settings.textareaClass);
+            		textarea.attr('id', (settings.textareaClass + idCounter++ ));
 			elem.append(textarea);
 		    }
 
 		    if (!buttons.length) {
-			buttons  = $('<div/>', {
-			    class: settings.buttonClass,
-			    id   : settings.buttonClass + idCounter++
-			}).insertBefore(textarea);
+			buttons  = $('<div/>');
+            		buttons.addClass(   settings.buttonsClass);
+            		buttons.attr('id', (settings.buttonsClass + idCounter++ ));
+			buttons.insertBefore(textarea);
 		    }
 
 		    if (!preview.length) {
-			preview  = $('<div/>', {
-			    class: settings.previewClass,
-			    id   : settings.previewClass + idCounter++
-			}).insertAfter(textarea);
+			preview  = $('<div/>');
+            		preview.addClass(   settings.previewClass);
+            		preview.attr('id', (settings.previewClass + idCounter++ ));
+			preview.insertAfter(textarea);
 		    }
 
 		    // 2) Create the editor!
